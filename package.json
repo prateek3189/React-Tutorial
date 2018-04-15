@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-      "watch-build": "watchify -t -o build/app.js -v -d src/js/app.jsx"
+    "watch-build": "watchify -t -o build/app.js -v -d src/js/app.jsx"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "babelify": "^8.0.0",
+    "prop-types": "^15.6.1",
     "react": "^16.3.1",
     "react-dom": "^16.3.1"
   },

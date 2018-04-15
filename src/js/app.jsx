@@ -1,32 +1,34 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-// Common files
-import Header from "./common/header.jsx";
-import Footer from "./common/footer.jsx";
-
-// Content file
-import Content from "./content.jsx";
-
-const details = {
-    name: "John Mathew",
-    age: 35,
-    city: "Colarado"
-}
-
 // Component
-class App extends React.Component {
+class Counter extends React.Component {
+    constructor () {
+        super();
+        this.state = {
+            counter: 0
+        }
+    }
+
     render() {
-        return <div className="main">
-            <Header name="john" />
-            <Content userInfo={details}/>
-            <Footer />
+        const { counter } = this.state;
+        return <div>
+            <h1>Counter: {counter}</h1>
+            <button onClick={this.changeValue.bind(this, 'INCREMENT')}>Increment</button>
+            <button onClick={this.changeValue.bind(this, 'DECRMENT')}>Decrement</button>
         </div>;
+    }
+
+    changeValue(action) {
+        let currentValue = this.state.counter;
+        const newValue = action === 'INCREMENT' ? currentValue + 1 : currentValue -1;
+        this.setState({
+            counter: (newValue >= 0 ? newValue : 0)
+        });
     }
 }
 
-// Rander it through react-dom
 ReactDOM.render(
-    <App />,
+    <Counter />,
     document.getElementById('content')
 );
